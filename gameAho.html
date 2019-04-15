@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+  <meta charset="utf-8">
+  <title>gameAho</title>
+</head>
+
+<body>
+
+  <script>
+  function checkInput(){
+    var maxNum = document.getElementById("numInput").value;
+    if(maxNum == null || maxNum == ""){
+      var errorMsg = "必須項目を入力して下さい。";
+      alert(errorMsg);
+      return false;
+    }else{
+      var objRegExp = /^\+?[1-9][0-9]*$/;
+      if(!objRegExp.test(maxNum)){
+        var numErrMsg = "無効の数字が入力されています。";
+        alert(numErrMsg);
+        return false;
+      }
+    }
+    return true;
+  }
+  function resultOutput(){
+    document.getElementById("results").innerHTML="";
+    var maxNum = document.getElementById("numInput").value;
+    if(checkInput() == true){
+      var outputNum = "";
+      for(var i=1;i<=maxNum;i++){
+        if((i % 7 === 0)||Boolean(i.toString().match(/7/))){
+          outputNum = outputNum + "数字：" + i + "<br />";
+        }
+        document.getElementById("results").innerHTML= outputNum;
+      }
+    }
+  }
+  </script>
+  <p>*入力：<input type="text" id="numInput" name="name" size="6">半角数字で</p>
+  <button onclick="resultOutput()">click</button>
+  <p id="results"></p>
+
+</body>
+
+</html>
